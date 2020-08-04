@@ -8,7 +8,7 @@ env:
 
 script:
   - doxker login -u-"$DOCKER_USERBANE" -p="$DOCKER_PASSWORD"
-  - docker buil -t node:$NODE_VERSION --build-arg NODE_IMAGE="node:${NODE_VERSION}" .
+  - docker build -t node:$NODE_VERSION --build-arg NODE_IMAGE="node:${NODE_VERSION}" .
   - docker images
   - docker tag node:$NODE_VERSION $DOCKER_USERNAME/probot-hello:NODE_VERSION-$(git rev-parse HEAD)
   - docker push $DOCKER_USERNAME/probot-hello:NODE_VERSION-$(git rev-parse HEAD)
